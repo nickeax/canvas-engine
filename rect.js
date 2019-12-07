@@ -1,16 +1,18 @@
 import { Rgba } from './rgba.js'
 
 export class Rect {
-  constructor(area, c) {
-    [this.x1, this.y1, this.x2, this.y2] = area;
+  constructor(area, c, v) {
+    [this.x1, this.y1, this.width, this.height] = area;
     this.colour = new Rgba(...c);
-    console.table(this.colour);    
+    this.vel = v;
   }
 
-  x1;y1;x2;y2;
+  x1;y1;
+  width;
+  height;
   directionX = true;
   directionY = false;
-  vel;
+  vel = [];
   colour;
 
   setColour(c) {
@@ -24,13 +26,13 @@ export class Rect {
   setDirectionX (dir) {
     this.directionX = dir;
   }
+  
+  setDirectionY (dir) {
+    this.directionY = dir;
+  }
 
   toggleDirectionX() {
     this.directionX = !this.directionX;
-  }
-
-  setDirectionX (dir) {
-    this.directionX = dir;
   }
 
   toggleDirectionY() {
@@ -43,7 +45,7 @@ export class Rect {
   }
   
   isRightScreen() {
-    if(this.x2 - this.x1 >= window.innerWidth) return true;
+    if(this.x1 + this.width >= window.innerWidth) return true;
     return false;
   }
 
@@ -53,7 +55,7 @@ export class Rect {
   }
 
   isBottomScreen() {
-    if(this.y2 - this.y1 > window.innerHeight) return true;
+    if(this.height + this.y1 > window.innerHeight) return true;
     return false;
   }
 
@@ -64,32 +66,32 @@ export class Rect {
     if(this.isBottomScreen()) this.toggleDirectionY();
   }
 
-  move(v) {    
-    (v[0] > 0) ? this.directionX = true: this.directionX = false;
-    (v[1] > 0) ? this.directionY = true: this.directionY = false;
+  move(v) { 
+    let v0 = this.vel[0];
+    let v1 = this.vel[1];   
+    (this.vel[0] > 0) ? v0 = true: v0 = false;
+    (this.vel[1] > 0) ? v1 = true: v1 = false;
     this.hitEdge();
+    console.log(`this.DirectionX: ${this.directionX}`);
+    
     switch (this.directionX) {      
       case true: {
-        this.x1 += v[0];
-        this.x2 += v[0];
+        this.x1 += this.vel[0];
         break;
       }
       case false: {
-        this.x1 -= Math.abs(v[0]);
-        this.x2 -= Math.abs(v[0]);
+        this.x1 -= Math.abs(this.vel[0]);
         break;
       }
     }
 
     switch (this.directionY) {
       case true: {
-        this.y1 += v[1];
-        this.y2 += v[1];
+        this.y1 += this.vel[1];
         break;
       }
       case false: {
-        this.y1 -= Math.abs(v[1]);
-        this.y2 -= Math.abs(v[1]);
+        this.y1 -= Math.abs(this.vel[1]);
         break;
       }
     }

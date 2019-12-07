@@ -20,9 +20,9 @@ export class Context {
 
   dRect(r) {
     this.ctx.fillStyle = `rgba(${r.getColour()})`;
-    this.ctx.fillRect(r.x1, r.y1, r.x2, r.y2);
+    this.ctx.fillRect(r.x1, r.y1, r.x1 + r.width, r.y1 + r.height);
   }
   cRect(r) {
-    this.ctx.clearRect(r.x1, r.y1, r.x2, r.y2);
+    this.ctx.clearRect(r.x1, r.y1, r.x1 + r.width, r.y1 + r.height);
   }
 }
