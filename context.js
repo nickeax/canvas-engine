@@ -22,5 +22,7 @@ export class Context {
     this.ctx.fillStyle = `rgba(${r.getColour()})`;
     this.ctx.fillRect(r.x1, r.y1, r.x2, r.y2);
   }
-
+  cRect(r) {
+    this.ctx.clearRect(r.x1, r.y1, r.x2, r.y2);
+  }
 }

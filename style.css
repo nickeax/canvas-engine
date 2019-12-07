@@ -6,10 +6,9 @@
 }
 
 .container {
-  /* padding: 1rem; */
+  padding: 0;
 }
 
 #canv {
-  filter: blur(.5);
-  border: solid 1px black;
+  border: solid 2px rgb(22, 177, 53);
 }
