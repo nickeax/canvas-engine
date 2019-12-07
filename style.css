@@ -1,0 +1,15 @@
+*, body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: monospace;
+}
+
+.container {
+  /* padding: 1rem; */
+}
+
+#canv {
+  filter: blur(.5);
+  border: solid 1px black;
+}
