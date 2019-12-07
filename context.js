@@ -19,7 +19,7 @@ export class Context {
   }
 
   dRect(r) {
-    this.setColour(`rgba(${r.getColour()})`);
+    this.ctx.fillStyle = `rgba(${r.getColour()})`;
     this.ctx.fillRect(r.x1, r.y1, r.x2, r.y2);
   }
 
