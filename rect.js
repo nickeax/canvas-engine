@@ -2,8 +2,10 @@ import { Rgba } from './rgba.js'
 
 export class Rect {
   constructor(area, c) {
-    [this.x1, this.y1, this.x2, this.y2] = [area];
+    [this.x1, this.y1, this.x2, this.y2] = area;
     this.colour = new Rgba(...c);
+    console.table(this.colour);
+    
   }
 
   x1;y1;x2;y2;
