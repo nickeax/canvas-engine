@@ -5,9 +5,9 @@ export class Context {
   ctx;
   colour;
   
-  constructor(context) {
+  constructor(context) {    
     this.ctx = context;
-    this.colour = new Rgba([255, 255, 255, 1.0]);
+    this.colour = new Rgba([5, 255, 5, 1.0]);    
   }
 
   setColour(c) {
@@ -20,8 +20,6 @@ export class Context {
 
   dRect(r) {
     this.ctx.fillStyle = `rgba(${r.getColour()})`;
-    console.log("WTF??");
-    
     this.ctx.fillRect(r.x1, r.y1, r.width,  r.height);
   }
   cRect(r) {
