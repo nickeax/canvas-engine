@@ -2,25 +2,21 @@ import { Rect } from "./rect.js";
 import { Rgba } from "./rgba.js";
 import { Context } from "./context.js";
 
+let inc = 0;
 const c = new Context(init());
 c.fillStyle = "green";
 c.ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
 const rectArr = [];
 
-let originXmin = 0, originXmax = 40, originYmin = 0, originYmax = 40, sizeXmin = 100, sizeXmax = 400, sizeYmin = 100, sizeYmax = 400;
+let originXmin = 2, originXmax = 600, originYmin = 2, originYmax = 400, sizeXmin = 250, sizeXmax = 650, sizeYmin = 250, sizeYmax = 650;
 
-for(let i = 0; i < 90; i++) {
+for(let i = 0; i < 20; i++) {
   let tmpSize = [rr(originXmin, originXmax),rr(originYmin, originYmax), rr(sizeXmin, sizeXmax), rr(sizeYmin, sizeYmax)];
-  let tmpCol = [rr(250, 255), rr(25, 25), rr(0, 25), Math.abs(0.5 - Math.random())];
+  let tmpCol = [rr(10, 255), rr(10, 255), rr(10, 255), Math.random() / 1.5];
   let tmpVel = [rr(1, 2), rr(1, 2)];
   let tmpRec = new Rect(tmpSize, tmpCol, tmpVel);
   rectArr.push(tmpRec);
-  tmpSize = [rr(originXmin, originXmax),rr(originYmin, originYmax), rr(sizeXmin, sizeXmax), rr(sizeYmin, sizeYmax)];
-  tmpCol = [rr(25, 25), rr(200, 255), rr(0, 25), Math.abs(0.5 - Math.random())];
-  tmpVel = [rr(1, 4), rr(1, 4)];
-  let tmpRec2 = new Rect(tmpSize, tmpCol, tmpVel);
-  rectArr.push(tmpRec2);
 }
 
 // window.setInterval(moveRec, 5);
@@ -30,7 +26,11 @@ function moveRec() {
   let col = new Rgba();
   c.cScreen();
   rectArr.forEach(x => {
+    if(inc > 1000) inc = 0;
+    inc++;  
     x.move(x.vel);
+    if(inc % 30 == 0) x.incColours();
+    // x.setColour([rr(10, 255), rr(10, 255), rr(10, 255), Math.random() / 1.5]);
     c.dRect(x);
   })
   window.requestAnimationFrame(moveRec);

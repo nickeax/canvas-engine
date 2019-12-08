@@ -15,8 +15,12 @@ export class Rect {
   vel = [];
   colour;
 
+  incColours() {
+    this.colour.getIncCurrent();
+  }
+
   setColour(c) {
-    this.colour = c;
+    this.colour.setColour = c;
   }
 
   getColour() {
