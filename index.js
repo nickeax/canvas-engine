@@ -8,14 +8,19 @@ c.ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
 const rectArr = [];
 
-let originXmin = 0, originXmax = 40, originYmin = 0, originYmax = 40, sizeXmin = 1, sizeXmax = 40, sizeYmin = 1, sizeYmax = 40;
+let originXmin = 0, originXmax = 40, originYmin = 0, originYmax = 40, sizeXmin = 100, sizeXmax = 400, sizeYmin = 100, sizeYmax = 400;
 
-for(let i = 0; i < 300; i++) {
+for(let i = 0; i < 150; i++) {
   let tmpSize = [rr(originXmin, originXmax),rr(originYmin, originYmax), rr(sizeXmin, sizeXmax), rr(sizeYmin, sizeYmax)];
-  let tmpCol = [rr(250, 255), rr(25, 25), rr(0, 25), Math.random()];
+  let tmpCol = [rr(250, 255), rr(25, 25), rr(0, 25), Math.abs(0.5 - Math.random())];
   let tmpVel = [rr(1, 4), rr(1, 4)];
   let tmpRec = new Rect(tmpSize, tmpCol, tmpVel);
   rectArr.push(tmpRec);
+  tmpSize = [rr(originXmin, originXmax),rr(originYmin, originYmax), rr(sizeXmin, sizeXmax), rr(sizeYmin, sizeYmax)];
+  tmpCol = [rr(25, 25), rr(200, 255), rr(0, 25), Math.abs(0.5 - Math.random())];
+  tmpVel = [rr(1, 4), rr(1, 4)];
+  let tmpRec2 = new Rect(tmpSize, tmpCol, tmpVel);
+  rectArr.push(tmpRec2);
 }
 
 // window.setInterval(moveRec, 5);
