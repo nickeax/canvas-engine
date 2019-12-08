@@ -10,7 +10,7 @@ const rectArr = [];
 
 let originXmin = 0, originXmax = 40, originYmin = 0, originYmax = 40, sizeXmin = 100, sizeXmax = 400, sizeYmin = 100, sizeYmax = 400;
 
-for(let i = 0; i < 150; i++) {
+for(let i = 0; i < 90; i++) {
   let tmpSize = [rr(originXmin, originXmax),rr(originYmin, originYmax), rr(sizeXmin, sizeXmax), rr(sizeYmin, sizeYmax)];
   let tmpCol = [rr(250, 255), rr(25, 25), rr(0, 25), Math.abs(0.5 - Math.random())];
   let tmpVel = [rr(1, 4), rr(1, 4)];
