@@ -5,10 +5,14 @@ import { Context } from "./context.js";
 const c = new Context(init());
 const rectArr = [];
 
-for(let i = 0; i < 55; i++) {
-  let tmpSize = [rr(10, 50), rr(10, 50), rr(10, 50), rr(10, 50)];
-  let tmpCol = [rr(0, 255), rr(0, 255), rr(0, 255), 0.5];
-  let tmpVel = [rr(1, 4), rr(1, 4)];
+let originXmin = 0, originXmax = 500, originYmin = 0, originYmax = 300, sizeXmin = 50, sizeXmax = 500, sizeYmin = 50, sizYmax = 500;
+
+
+for(let i = 0; i < 2; i++) {
+  let tmpSize = [rr(originXmin, originXmax),rr(originYmin, originYmax), rr(sizeXmin, sizeXmax), rr(sizeYmin, sizYmax)];
+  
+  let tmpCol = [rr(0, 255), rr(0, 255), rr(0, 255), Math.random()];
+  let tmpVel = [rr(1, 14), rr(1, 14)];
   let tmpRec = new Rect(tmpSize, tmpCol, tmpVel);
   rectArr.push(tmpRec);
 }
@@ -18,8 +22,9 @@ window.requestAnimationFrame(moveRec);
 
 function moveRec() {
   // shuffle(rectArr);
+  c.cScreen();
   rectArr.forEach(x => {
-    c.cRect(x);
+    // c.cRect(x);
     x.move(x.vel);
     c.dRect(x);
   })
