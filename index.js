@@ -13,7 +13,7 @@ let originXmin = 0, originXmax = 40, originYmin = 0, originYmax = 40, sizeXmin =
 for(let i = 0; i < 90; i++) {
   let tmpSize = [rr(originXmin, originXmax),rr(originYmin, originYmax), rr(sizeXmin, sizeXmax), rr(sizeYmin, sizeYmax)];
   let tmpCol = [rr(250, 255), rr(25, 25), rr(0, 25), Math.abs(0.5 - Math.random())];
-  let tmpVel = [rr(1, 4), rr(1, 4)];
+  let tmpVel = [rr(1, 2), rr(1, 2)];
   let tmpRec = new Rect(tmpSize, tmpCol, tmpVel);
   rectArr.push(tmpRec);
   tmpSize = [rr(originXmin, originXmax),rr(originYmin, originYmax), rr(sizeXmin, sizeXmax), rr(sizeYmin, sizeYmax)];
